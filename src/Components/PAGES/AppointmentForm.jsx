@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"; // ✅ import useNavigate
 
 function AppointmentForm() {
   const [formData, setFormData] = useState({
+    
     name: "",
     email: "",
     phone: "",
