@@ -1,4 +1,5 @@
 import React, { useReducer, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ import useNavigate
 
 const initialState = {
   booking: null,
@@ -14,15 +15,15 @@ function reducer(state, action) {
       return { ...state, isEditing: true };
 
     case "UPDATE":
-      localStorage.setItem("bookingData", JSON.stringify(action.payload));
+      localStorage.setItem(`booking_${action.email}`, JSON.stringify(action.payload));
       return { booking: action.payload, isEditing: false };
 
     case "DELETE":
-      localStorage.removeItem("bookingData");
+      localStorage.removeItem(`booking_${action.email}`);
       return { booking: null, isEditing: false };
 
     case "CLEAR":
-      localStorage.clear();
+      localStorage.removeItem(`booking_${action.email}`);
       return { booking: null, isEditing: false };
 
     default:
@@ -33,24 +34,37 @@ function reducer(state, action) {
 function BookingSummary() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [editData, setEditData] = useState({});
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate(); 
 
-  // Load booking data from localStorage
   useEffect(() => {
-    const savedBooking = JSON.parse(localStorage.getItem("bookingData"));
+
+    const loggedUser = JSON.parse(localStorage.getItem("userDetails"));
+    if (!loggedUser) {
+      alert("Please log in first!");
+      navigate("/login"); 
+      return;
+    }
+
+    setUser(loggedUser);
+
+    const savedBooking = JSON.parse(localStorage.getItem(`booking_${loggedUser.email}`));
     if (savedBooking) {
       dispatch({ type: "LOAD", payload: savedBooking });
     }
-  }, []);
+  }, [navigate]);
+
+  if (!user) return null;
 
   if (!state.booking) {
     return (
       <div className="text-center mt-5">
-        <h3>No Appointment Found !</h3>
+        <h3>No Appointment Found for {user.name}!</h3>
         <p>Please book your appointment first!</p>
         <button
           className="btn mt-3"
           style={{ backgroundColor: "pink", color: "white" }}
-          onClick={() => (window.location.href = "/book")}
+          onClick={() => navigate("/book")}
         >
           Go to Booking Page
         </button>
@@ -64,15 +78,14 @@ function BookingSummary() {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    dispatch({ type: "UPDATE", payload: editData });
-    alert("Booking updated successfully ");
+    dispatch({ type: "UPDATE", payload: editData, email: user.email });
+    alert("Booking updated successfully!");
   };
-
 
   if (!state.isEditing) {
     return (
       <div className="container text-center mt-5">
-        <h2>💅 Booking Summary</h2>
+        <h2>💅 Booking Summary for {user.name}</h2>
         <div
           className="card shadow mt-4 p-4"
           style={{ borderRadius: "20px", backgroundColor: "#fff0f5" }}
@@ -99,7 +112,7 @@ function BookingSummary() {
               className="btn btn-danger"
               onClick={() => {
                 if (window.confirm("Are you sure to delete booking?")) {
-                  dispatch({ type: "DELETE" });
+                  dispatch({ type: "DELETE", email: user.email });
                 }
               }}
             >
@@ -110,11 +123,11 @@ function BookingSummary() {
               className="btn btn-secondary"
               onClick={() => {
                 if (window.confirm("Clear all data?")) {
-                  dispatch({ type: "CLEAR" });
+                  dispatch({ type: "CLEAR", email: user.email });
                 }
               }}
             >
-               Clear All
+              Clear All
             </button>
           </div>
 
@@ -128,7 +141,7 @@ function BookingSummary() {
 
   return (
     <div className="container mt-5 text-center">
-      <h2>✏️ Edit Appointment</h2>
+      <h2> Edit</h2>
       <form
         className="w-75 mx-auto card shadow p-4"
         style={{ backgroundColor: "#fff0f5", borderRadius: "20px" }}
@@ -173,7 +186,7 @@ function BookingSummary() {
           onChange={handleEditChange}
         />
 
-        <button className="btn btn-success w-100 mt-2"> Save Changes</button>
+        <button className="btn btn-success w-100 mt-2">Save Changes</button>
       </form>
     </div>
   );
