@@ -26,7 +26,7 @@ function Profile() {
 
   return (
     <div className="container text-center mt-5">
-      <h2>Your Profile</h2>
+      <h2>Profile</h2>
       <div
         className="card mt-4 shadow p-4"
         style={{ backgroundColor: "#fff0f5", borderRadius: "20px" }}

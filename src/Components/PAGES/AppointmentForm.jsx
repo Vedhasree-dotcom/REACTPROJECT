@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ import useNavigate
+import { useNavigate } from "react-router-dom"; 
 
 function AppointmentForm() {
   const [formData, setFormData] = useState({
-    
+
     name: "",
     email: "",
     phone: "",
@@ -69,7 +69,7 @@ function AppointmentForm() {
   if (isBooked) {
     return (
       <div className="container text-center mt-5">
-        <h2 className="text-success mb-3">Appointment Booked Successfully 💅</h2>
+        <h2 className="text-success mb-3">Appointment Booked Successfully ✅</h2>
         <div
           className="card shadow p-4"
           style={{ borderRadius: "20px", backgroundColor: "#fff0f5" }}
