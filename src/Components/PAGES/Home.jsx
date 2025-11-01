@@ -3,10 +3,11 @@ import React from 'react';
 function Home() {
   return (
     <div className='container-fluid'>
-    <div className="home text-center mt-3">
-      <h1>Style with <br/>Grace & Gloss </h1>
-      <div>
-      <img src="https://images.pexels.com/photos/7755207/pexels-photo-7755207.jpeg" alt="salon" className='home-img' />
+    <div className="home mt-2">
+       <h2 className='text-overlay'>Your Perfect Beauty Partner</h2>
+      
+      <div className='image-container'>
+      <img src="https://images.pexels.com/photos/15026763/pexels-photo-15026763.jpeg" className="image" alt="salon" />
     </div>
     </div>
     </div>
