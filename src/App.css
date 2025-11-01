@@ -191,6 +191,35 @@ body.sidebar-open {
     }
 }
 
+/* ................................... */
+.Grid{
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin:30px 30px;
+}
+.image-grid img{
+  object-fit: cover;
+  height: 400px;
+}
+.content h3{
+  color:rgb(226, 91, 114);
+  font-weight: bold;
+}
+.content p{
+  font-size: 17px;
+  font-weight: 400;
+  text-align: justify;
+}
+.read{
+  font-size: 15px;
+  background-color: rgb(226, 91, 114);
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+  border-radius: 50px;
+  padding: 10px 25px;
+}
 
 /* ....................... */
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import { Link } from 'react-router-dom';
 
 
 function Home() {
@@ -11,7 +12,28 @@ function Home() {
     </div>
     </div>
 
-    <Carousel className='carousels mt-4 ms-3 me-3'>
+    <div className='Grid'>
+      <div className='image-grid'>
+        <img src="https://images.pexels.com/photos/19664877/pexels-photo-19664877.jpeg" alt="" />
+      </div>
+      <div className='content'>
+        <h3>ABOUT US</h3>
+        <p>At Grace & Gloss Salon, we believe beauty is more than just appearance — it’s an expression of confidence, 
+          care, and individuality. Nestled in a serene and stylish space, our salon offers a perfect blend of luxury and comfort, designed to make you feel pampered from the moment you step in.
+          Our team of skilled professionals brings expertise, creativity, and passion to every service, whether it’s a refreshing hair spa, a soothing facial,
+          a flawless manicure, or a complete makeover. We use high-quality, trusted products to ensure your hair, skin, and nails get the gentle care they deserve.
+          At Grace & Gloss, we don’t just enhance your outer beauty we help you rediscover your inner glow. Every detail, every touch, 
+          and every style is crafted to reflect your unique grace and shine with timeless gloss. Come, relax, and let us turn your beauty moments into a truly graceful experience.
+          Our talented team of beauty professionals stays updated with the latest trends and techniques to ensure you receive nothing less than excellence. 
+          We believe that beauty should be effortless yet empowering. That’s why we use only premium, dermatologist-approved products that nourish your skin and hair from within.
+          We use premium-quality, skin-friendly products that nurture your natural beauty while adding that signature.<br/><br/>
+          <b style={{fontSize: "17px", color: "brown"}}> Come indulge in the art of beauty and grace, because you deserve to shine with timeless gloss every day !</b>
+          </p>
+          <Link className='read text-decoration-none mt-3' to='/about'>Read More</Link>
+      </div>
+    </div>
+
+    <Carousel className='carousels mt-5 ms-4 me-4'>
       <Carousel.Item interval={1000} className='carousel-item'>
         <img
           className="d-block w-100"
