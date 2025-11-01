@@ -15,7 +15,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg pt-3 pb-3">
+      <nav className="navbar navbar-expand-lg position-fixed pt-3 pb-3">
         <div className="d-flex align-items-center">
           <button 
             className="navbar-toggler d-lg-none" 

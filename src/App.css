@@ -136,6 +136,7 @@ body.sidebar-open {
   overflow: auto;
 }
 
+/* ........................................... */
 
 
 .home{
@@ -146,13 +147,14 @@ body.sidebar-open {
   z-index: 3;
 }
 .image{
+  margin-top: 10px;
   height: auto;
   object-fit: cover;
   width: 100%;
   opacity: 0.7;
-clip-path: polygon(
+  clip-path: polygon(
     0 0,
-    100% 0,
+    100%  0,
     100% 85%,
     50% 100%,
     0 85%
@@ -166,10 +168,69 @@ clip-path: polygon(
   left: 50%;  
   text-shadow: 3px 3px rgb(39, 38, 38);      
   transform: translate(-50%, -50%);
-  color: rgb(223, 134, 144);
-  font-size: 65px;
+  color: rgb(235, 154, 164);
+  font-size: 68px;
   font-weight: bold;
   text-align: center;
+}
+
+@media (max-width: 450px){
+    .image{
+      margin-top: 40px;
+
+    }
+
+    .text-overlay{
+      font-size: 20px;
+      position: absolute;
+      z-index: 4;
+      top: 30%;         
+      left: 50%; 
+      text-shadow: 2px black; 
+
+    }
+}
+
+
+/* ....................... */
+
+.carousel-item{
+  height: 600px;
+}
+.carousel-item img{
+  opacity: 0.8;
+}
+.carousel-caption{
+  margin-bottom: 200px;
+  text-align: center;
+}
+.carousel-caption h3{
+  font-size: 60px;
+  font-weight: bold;
+  text-shadow: 2px 2px black;
+}
+.carousel-caption p{
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 2px 2px black;
+}
+
+@media (max-width: 450px){
+  .carousel-caption{
+  margin-bottom: 360px;
+  text-align: center;
+}
+
+  .carousel-caption h3{
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 2px 2px black;
+  }
+  .carousel-caption p{
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 2px 2px black;
+}
 }
 
 

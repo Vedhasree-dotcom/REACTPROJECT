@@ -5,7 +5,7 @@ import { FaInstagram, FaFacebookF, FaWhatsapp } from "react-icons/fa";
 function Footer() {
   return (
     <footer
-      className="text-center text-lg-start text-dark mt-5"
+      className="text-center text-lg-start mt-5 text-dark position-absolute ZIndex-4"
       style={{ backgroundColor: "#ffe6f0",width: "100%" }}>
 
       <div className="container-fluid">
@@ -19,12 +19,11 @@ function Footer() {
               padding: "40px",
             }}
           >
-            <h5 className="fw-bold mb-3 text-dark">Grace & Gloss</h5>
-            <p style={{ color: "#555" }}>
-              Where elegance meets perfection.  
-              Experience the art of beauty and self-care in every visit! <br></br><br></br>
-
-              Change your style with Us.
+            <h5 className="fw-bold mb-3" style={{fontSize: "30px", color: "rgb(226, 91, 114)"}}>Grace & Gloss</h5>
+            <p style={{ color: "#555"}}>
+              At Grace & Gloss, we offer you the best-in-class services to meet your everyday beauty needs as well as for special occasions.
+              You can choose from our range of hair, skin, nails, makeover and bridal services.<br></br>
+              <b>Experience the art of beauty and self-care in every visit!</b> 
             </p>
           </div>
 
@@ -87,7 +86,6 @@ function Footer() {
         </div>
       </div>
 
-      {/* Bottom Bar */}
       <div
         className="text-center p-3"
         style={{ backgroundColor: "rgb(226, 91, 114)", color: "white", borderTop: "1px solid #fff" }}
