@@ -5,11 +5,11 @@ import { FaInstagram, FaFacebookF, FaWhatsapp } from "react-icons/fa";
 function Footer() {
   return (
     <footer
-      className="text-center text-lg-start mt-5 text-dark position-absolute ZIndex-4"
+      className="text-center text-lg-start mt-5  text-dark position-absolute ZIndex-4"
       style={{ backgroundColor: "#ffe6f0",width: "100%" }}>
 
       <div className="container-fluid">
-        <div className="row text-center text-md-start">
+        <div className="row text-center  text-md-start">
 
           <div
             className="col-md-3 mb-4"
@@ -17,6 +17,7 @@ function Footer() {
               borderRadius: "10px",
               boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
               padding: "40px",
+
             }}
           >
             <h5 className="fw-bold mb-3" style={{fontSize: "30px", color: "rgb(226, 91, 114)"}}>Grace & Gloss</h5>

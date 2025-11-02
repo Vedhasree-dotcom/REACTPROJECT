@@ -43,13 +43,13 @@ function Navbar() {
             <li className="nav-item"><Link className="nav-link text-light fw-bold" to="/services">Services</Link></li>
             <li className="nav-item"><Link className="nav-link text-light fw-bold" to="/contact">Contact</Link></li>
             <li className="nav-item" 
-             style={{color: "white", 
+             style={{ 
              fontWeight: "bold", marginLeft: "30px",
               borderRadius: "20px", padding: "0 10px" }}>
               <Link className="nav-link text-light fw-bold" to="/book">Book Appointment</Link></li>
 
               <nav>
-                <Link className='btn btn-light text-dark' to="/login"
+                <Link className='btn btn-light text-dark text-decoration-none fw-bold ' to="/login"
                 style={{marginLeft: "180px"}} > Login</Link>
 
                 <Link to="/profile" className="text-white text-decoration-none ms-4">

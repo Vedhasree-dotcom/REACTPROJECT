@@ -3,6 +3,8 @@ import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom';
 import salon from "../../assets/salon.png";
 import girl from "../../assets/girl.png";
+import pic1 from "../../assets/pic1.png";
+import pic2 from "../../assets/pic2.png";
 
 
 function Home() {
@@ -37,7 +39,7 @@ function Home() {
     <img src={salon} alt=" " style={{ width: "80%", height: "auto", margin: "20px 130px", objectFit:'contain' }}/><br/>
 
 
-    <Carousel className='carousels mt-5 ms-4 me-4'>
+    <Carousel className='carousels mt-5 ms-5 me-5'>
       <Carousel.Item interval={1000} className='carousel-item'>
         <img
           className="d-block w-100"
@@ -82,13 +84,71 @@ function Home() {
     <p>Come visit us or contact us @ 9778548096 for all your queries. Or you can just fill out the<br/> online booking and enquiry form,
        and we will get back to you as soon as we can.</p>
 
-    <p style={{marginTop:"40px"}}><Link className='booking text-decoration-none mt-5 fw-bold' to='/book'
-    style={{backgroundColor: "rgb(226, 91, 114)",color: "white", padding: "10px 30px", borderRadius: "40px" }}
+    <p style={{marginTop:"50px"}}><Link className='booking text-decoration-none mt-5 fw-bold' to='/book'
+    style={{backgroundColor: "rgb(226, 91, 114)",color: "white", padding: "15px 30px", borderRadius: "40px" }}
     
     >Book Appointment</Link></p>
     </div>
     <img src={girl} className='girl-image' alt="" />
     </div>
+
+
+    <div className='title'>
+    <h4>Transforming Lives</h4>
+      <h2>Our Client Says</h2>
+    </div>
+
+     <div className="review">
+      <div className="overlay"></div> 
+
+      <Carousel fade interval={3000}>
+        <Carousel.Item>
+          <div className="review-item">
+            <p style={{marginTop: "40px", fontSize: "20px", textAlign: "justify", fontWeight: "600"}}>
+              <i className="fa-solid fa-quote-left" style={{fontSize:"60px"}}></i> <br/>
+              When I went to visit the salon for my bridal make up I was a
+              little worried as I had scars on my face. But the expert Suman
+              assured me about the quality of products and I absolutely loved
+              the end result.<br/> <i className="fa-solid fa-quote-right" style={{fontSize:"60px", marginLeft:"600px"}}></i>
+            </p>
+            <img src={pic1} alt="client1" />
+            <h3 className="testimonial-name">Nimisha Anna Boban</h3>
+            <p className="testimonial-place">KOCHI</p>
+          </div>
+        </Carousel.Item>
+
+        <Carousel.Item>
+          <div className="review-item">
+            <p style={{marginTop: "40px", fontSize: "20px", textAlign: "justify", fontWeight: "600"}}>
+              <i className="fa-solid fa-quote-left" style={{fontSize:"60px"}}></i> <br/>
+              When I went to visit the salon for my bridal make up I was a
+              little worried as I had scars on my face. But the expert Suman
+              assured me about the quality of products and I absolutely loved
+              the end result.<br/> <i className="fa-solid fa-quote-right" style={{fontSize:"60px", marginLeft:"600px"}}></i>
+            </p>
+            <img src={pic2} alt="client2" />
+            <h3 className="testimonial-name">Sneha Kumar</h3>
+            <p className="testimonial-place">KOZHIKODE</p>
+          </div>
+        </Carousel.Item>
+
+        <Carousel.Item>
+          <div className="review-item">
+            <p style={{marginTop: "40px", fontSize: "20px", textAlign: "justify", fontWeight: "600"}}>
+              <i className="fa-solid fa-quote-left" style={{fontSize:"60px"}}></i> <br/>
+              When I went to visit the salon for my bridal make up I was a
+              little worried as I had scars on my face. But the expert Suman
+              assured me about the quality of products and I absolutely loved
+              the end result.<br/> <i className="fa-solid fa-quote-right" style={{fontSize:"60px", marginLeft:"600px"}}></i>
+            </p>
+            <img src={pic2} alt="client3" />
+            <h3 className="testimonial-name">Aishwarya Raj</h3>
+            <p className="testimonial-place">KOTTAYAM</p>
+          </div>
+        </Carousel.Item>
+      </Carousel>
+    </div>
+ 
 
 
 
