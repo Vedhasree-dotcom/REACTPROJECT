@@ -1,6 +1,8 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom';
+import salon from "../../assets/salon.png";
+import girl from "../../assets/girl.png";
 
 
 function Home() {
@@ -29,9 +31,11 @@ function Home() {
           We use premium-quality, skin-friendly products that nurture your natural beauty while adding that signature.<br/><br/>
           <b style={{fontSize: "17px", color: "brown"}}> Come indulge in the art of beauty and grace, because you deserve to shine with timeless gloss every day !</b>
           </p>
-          <Link className='read text-decoration-none mt-3' to='/about'>Read More</Link>
+          <Link className='read text-decoration-none ' to='/about'>Read More</Link>
       </div>
     </div>
+    <img src={salon} alt=" " style={{ width: "80%", height: "auto", margin: "20px 130px", objectFit:'contain' }}/><br/>
+
 
     <Carousel className='carousels mt-5 ms-4 me-4'>
       <Carousel.Item interval={1000} className='carousel-item'>
@@ -46,7 +50,7 @@ function Home() {
         </Carousel.Caption>
       </Carousel.Item>
 
-      <Carousel.Item interval={500}  className='carousel-item'>
+      <Carousel.Item interval={1000}  className='carousel-item'>
         <img
           className="d-block w-100"
           src="https://images.pexels.com/photos/11441410/pexels-photo-11441410.jpeg"
@@ -69,7 +73,28 @@ function Home() {
           <p>Perfectly polished nails for that flawless, confident finish</p>
         </Carousel.Caption>
       </Carousel.Item>
-    </Carousel>
+    </Carousel><br/>
+
+   <div className="banner-container mt-4">
+    <div className='banner-text'>
+    <h1>Contact Us</h1>
+    <h5>Have Questions? We are always thrilled to hear from you!</h5>
+    <p>Come visit us or contact us @ 9778548096 for all your queries. Or you can just fill out the<br/> online booking and enquiry form,
+       and we will get back to you as soon as we can.</p>
+
+    <p style={{marginTop:"40px"}}><Link className='booking text-decoration-none mt-5 fw-bold' to='/book'
+    style={{backgroundColor: "rgb(226, 91, 114)",color: "white", padding: "10px 30px", borderRadius: "40px" }}
+    
+    >Book Appointment</Link></p>
+    </div>
+    <img src={girl} className='girl-image' alt="" />
+    </div>
+
+
+
+
+
+
   
 
 
