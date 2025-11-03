@@ -1,0 +1,55 @@
+.auth-container {
+  display: flex;
+  height: 100vh;
+  margin-top: 50px;
+  overflow: hidden;
+  transition: all 0.8s ease;
+}
+
+.auth-image {
+  width: 100%;
+  transition: transform 0.8s ease;
+  margin-top: 30px;
+}
+
+.side-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  
+}
+
+.auth-form {
+  width: 100%;
+  background-color: rgb(250, 217, 222);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.8s ease;
+}
+
+.auth-container.sign-up-mode .auth-image {
+  transform: translateX(100%);
+}
+
+.auth-container.sign-up-mode .auth-form {
+  transform: translateX(-100%);
+}
+
+.toggle-btn {
+  margin-bottom: 80px;
+  border: none;
+  color:rgb(226, 91, 114);
+  padding: 10px 20px;
+  margin-right: 80px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.toggle-btn:hover {
+  background-color: rgb(226, 91, 114);
+  color:white ;
+}

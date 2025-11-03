@@ -68,8 +68,9 @@ body {
   margin: 0 0;
   display: flex;
   overflow-x: hidden;
+  /* min-height: 100vh; */
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  /* place-items: center; */
+  place-items: center;
   /* min-width: 320px; */
 }
 

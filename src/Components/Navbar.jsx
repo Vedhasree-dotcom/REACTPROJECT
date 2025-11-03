@@ -49,7 +49,7 @@ function Navbar() {
               <Link className="nav-link text-light fw-bold" to="/book">Book Appointment</Link></li>
 
               <nav>
-                <Link className='btn btn-light text-dark text-decoration-none fw-bold ' to="/login"
+                <Link className='btn btn-light text-dark text-decoration-none fw-bold ' to="/auth"
                 style={{marginLeft: "180px"}} > Login</Link>
 
                 <Link to="/profile" className="text-white text-decoration-none ms-4">

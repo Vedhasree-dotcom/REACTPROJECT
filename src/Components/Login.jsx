@@ -48,35 +48,37 @@ function Login() {
   };
 
   return (
-    <div className="ms-5 mb-3">
-      <h2 className="ms-5 mt-5 text-success"><b>Login</b></h2>
-
+    <div className="sign-in pb-5 ">
+      <h2><b>Welcome Back</b></h2>
       <Form
-        className="ms-5 mt-4 w-50 p-4"
-        style={{ borderRadius: "40px", backgroundColor: "plum" }}
+        className=" form  "
         onSubmit={handleSubmit}
       >
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label className="ps-4 mt-3 text-light">Email address</Form.Label>
+        <Form.Group className="mb-2" controlId="formBasicEmail">
+          <Form.Label className="ps-4 mt-2 text-dark"
+          style={{fontSize: "16px",fontStyle:"oblique", fontWeight:"500"}} >
+          Email address</Form.Label>
           <Form.Control
             type="email"
-            placeholder="Enter email"
-            className="ms-4 w-50"
+            className="ms-4  w-50 "
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <Form.Text className="text-light ms-4">
+          <Form.Text className="text-secondary ms-4">
             We'll never share your email with anyone else.
           </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label className="ps-4 mt-4 text-light">Password</Form.Label>
+
+          <Form.Label className="ps-4 mt-2 text-dark" 
+          style={{fontSize: "16px",fontStyle:"oblique", fontWeight:"500"}}>
+            Password</Form.Label>
+
           <div className="d-flex align-items-center ms-4">
             <Form.Control
               type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              className="w-50"
+              className="w-50 "
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -91,24 +93,23 @@ function Login() {
         </Form.Group>
 
         <Form.Group className="mb-3 ms-4" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" className="text-light" />
+          <Form.Check type="checkbox" label="Check me out" className="text-dark"
+            style={{fontSize: "16px",fontStyle:"oblique", fontWeight:"500"}} />
         </Form.Group>
 
-        <p style={{ color: "black" }}>
-          Don't have an account?{" "}
-          <Link className="text-success text-decoration-none" to="/register">
-            Register now
-          </Link>
-        </p>
+        
 
-        <Button variant="dark" type="submit" className="ms-4 mb-3 mt-3 text-light">
+        <Button  type="submit" className="mt-3 ps-5 pe-5 text-light"
+         style={{backgroundColor: "rgb(226, 91, 114)",
+          border: "none", marginLeft: "150px",
+           padding:"10px 20px"}} >
           <b>Submit</b>
         </Button>
 
 
         {message && (
           <p
-            className="ms-4 mt-3"
+            className="ms-4 mt-1"
             style={{
               color: message.includes("✅") ? "green" : "red",
               fontWeight: "bold",
