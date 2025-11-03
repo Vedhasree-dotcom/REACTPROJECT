@@ -360,7 +360,6 @@ body.sidebar-open {
 /* .................Login page...................... */
 .sign-in{
   background-color: rgb(250, 217, 222);
- 
   width: 100%;
   margin-left: 500px;
   padding-right: 0;
@@ -372,5 +371,22 @@ body.sidebar-open {
   font-style: italic;
   margin-top: 50px;
   padding-right: 250px;
+  text-align: center;
+}
+
+
+/* ...............Register................. */
+.sign-up{
+  width: 100%;
+  background-color: rgb(250, 217, 222);
+  margin-left: 500px;
+}
+
+.sign-up h2{
+  font-size: 30px;
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 50px;
+  margin-left: 250px;
   text-align: center;
 }

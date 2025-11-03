@@ -48,10 +48,10 @@ function Login() {
   };
 
   return (
-    <div className="sign-in pb-5 ">
+    <div className="sign-in pb-5 me-3 pe-3 ">
       <h2><b>Welcome Back</b></h2>
       <Form
-        className=" form  "
+        className=" form mt-3 "
         onSubmit={handleSubmit}
       >
         <Form.Group className="mb-2" controlId="formBasicEmail">
@@ -84,7 +84,7 @@ function Login() {
             />
             <Button
               variant="link"
-              className="text-light ms-2"
+              className="text-secondary ms-2"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
@@ -94,15 +94,16 @@ function Login() {
 
         <Form.Group className="mb-3 ms-4" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" className="text-dark"
-            style={{fontSize: "16px",fontStyle:"oblique", fontWeight:"500"}} />
+            style={{fontSize: "15px",fontStyle:"oblique"}} />
         </Form.Group>
 
         
 
-        <Button  type="submit" className="mt-3 ps-5 pe-5 text-light"
+        <Button  type="submit" className="mt-3 ps-5 w-50 pe-5 text-light"
          style={{backgroundColor: "rgb(226, 91, 114)",
-          border: "none", marginLeft: "150px",
-           padding:"10px 20px"}} >
+          border: "none",
+          marginLeft: "20px"
+          }} >
           <b>Submit</b>
         </Button>
 
