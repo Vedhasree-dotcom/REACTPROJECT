@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaUserCircle, FaBars, FaTimes } from "react-icons/fa";
+import { FaUserCircle, FaBars, FaTimes, FaMoon, FaSun } from "react-icons/fa";
+import { ThemeContext } from "../ThemeContext";
+
 
 function Navbar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+
+  const { darkMode, toggleTheme } = useContext(ThemeContext);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -113,6 +118,10 @@ function Navbar() {
                   >
                     <FaUserCircle size={28} />
                   </Link>
+
+                  <button className="theme-toggle" onClick={toggleTheme}>
+                  {darkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
+                </button>
                 </>
               )}
             </nav>
@@ -198,6 +207,10 @@ function Navbar() {
                     Logout
                   </button>
                 </li>
+
+                <button className="theme-toggle" onClick={toggleTheme}>
+                  {darkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
+                </button>
               </>
             )}
           </ul>

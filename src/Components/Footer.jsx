@@ -56,7 +56,7 @@ function Footer() {
             <Link className="text-dark text-decoration-none" to='/contact'>C K Tower 3rd floor, Mavoor Road, <br/> Calicut - Kerala <br/> pin: 673001</Link> <hr />
             <p> graceandgloss@gmail.com</p>
             <p> +91 98765 43210, +91 9778548096</p>
-            <p> Opens: 9:00 AM – 8:00 PM</p>
+            <p> Opens: 10:00 AM – 8:00 PM</p>
           </div>
 
           <div

@@ -45,7 +45,7 @@ function Login() {
       };
       localStorage.setItem("userDetails", JSON.stringify(userData));
 
-      setTimeout(() => navigate("/home"), 1000);
+      setTimeout(() => navigate("/"), 1000);
     }
   };
 
@@ -81,7 +81,7 @@ function Login() {
               Password
             </Form.Label>
 
-            <div className="d-flex align-items-center ms-3">
+            <div className="d-flex w-100 align-items-center ms-3">
               <Form.Control
                 type={showPassword ? "text" : "password"}
                 className="w-100"
@@ -121,7 +121,7 @@ function Login() {
 
           <p className="text-center fw-500">
             Don't have an account?{" "}
-            <Link className="register text-decoration-none" to="/register">
+            <Link className="click text-decoration-none" to="/register">
               Sign Up
             </Link>
           </p>

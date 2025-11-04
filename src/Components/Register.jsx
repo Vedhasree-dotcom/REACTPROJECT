@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import registerImg from '../assets/registerImg.jpg';
-import './Register.css'
+import './Register.css';
 
 
 function Register() {
@@ -103,7 +103,7 @@ function Register() {
         <label htmlFor="password">
           Password <span style={{ color: "red" }}>*</span>
         </label>
-        <div style={{ position: "relative", width: "90%" }}>
+        <div style={{ position: "relative", width: "100%" }}>
           <input
           className="register-input"
             type={showPassword ? "text" : "password"}
@@ -117,7 +117,7 @@ function Register() {
             style={{
               position: "absolute",
               right: "10px",
-              top: "7px",
+              top: "9px",
               cursor: "pointer",
               color: "gray",
             }}
@@ -130,12 +130,13 @@ function Register() {
         
         <button
           type="submit"
+          className="w-100"
           style={{
             backgroundColor: "rgb(226, 91, 114)",
             color: "white",
             padding: "10px 30px",
             border: "none",
-            borderRadius: "20px",
+            borderRadius: "10px",
             cursor: "pointer",
             fontWeight: "bold",
             marginTop: "10px",
@@ -143,6 +144,8 @@ function Register() {
         >
           Submit
         </button>
+
+        <p className="text-dark fw-500 mt-3 ms-5">Already have an account?<Link to="/login" className="click2 text-decoration-none">Sign In</Link></p>
       </form>
     </div>
     </div>

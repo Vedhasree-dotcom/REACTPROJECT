@@ -1,8 +1,6 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 import Navbar from './Components/Navbar'
 import Home from './Components/PAGES/Home';
@@ -15,33 +13,43 @@ import Login from './Components/Login';
 import Profile from './Components/Profile';
 import Footer from './Components/Footer';
 import Register from './Components/Register';
+import { ThemeProvider } from './ThemeContext';
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+
+  const hideLayoutRoutes = ['/login', '/register','/book'];
+  const shouldHideLayout = hideLayoutRoutes.includes(location.pathname);
 
   return (
     <>
-    <Router>
-      <Navbar/>
+      {!shouldHideLayout && <Navbar />}
+
       <Routes>
-        <Route path='/' element={<Home/>} />
-        <Route path='/about' element={<About/>} />
-        <Route path='/services' element={<Services/>} />
-        <Route path='/contact' element={<Contact/>} />
-        <Route path='/book' element={<AppointmentForm/>} />
-        <Route path='/register' element={<Register/>} />
-        <Route path='/login' element={<Login/>} /> 
-        <Route path='/profile' element={<Profile/>} />
-        <Route path="/" element={<AppointmentForm />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/services' element={<Services />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/book' element={<AppointmentForm />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} /> 
+        <Route path='/profile' element={<Profile />} />
         <Route path="/summary" element={<BookingSummary />} />
-        
-
-
       </Routes>
-      <Footer/>
-    </Router>
-      
+
+      {!shouldHideLayout && <Footer />}
     </>
-  )
+  );
 }
 
-export default App
+function App() {
+  return (
+    <ThemeProvider>
+    <Router>
+      <AppContent />
+    </Router>
+    </ThemeProvider>
+  );
+}
+
+export default App;

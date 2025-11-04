@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; 
+import { Link, useNavigate } from "react-router-dom";
 
 function AppointmentForm() {
   const [formData, setFormData] = useState({
-
     name: "",
     email: "",
     phone: "",
@@ -15,18 +14,18 @@ function AppointmentForm() {
 
   const [isBooked, setIsBooked] = useState(false);
   const [user, setUser] = useState(null);
-  const navigate = useNavigate(); 
+  const [dateTaken, setDateTaken] = useState(false); 
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loggedUser = JSON.parse(localStorage.getItem("userDetails"));
     if (!loggedUser) {
       alert("Please log in first to book an appointment!");
-      navigate("/login"); 
+      navigate("/login");
       return;
     }
 
     setUser(loggedUser);
-
     setFormData((prev) => ({
       ...prev,
       name: loggedUser.name,
@@ -42,8 +41,25 @@ function AppointmentForm() {
     }
   }, [navigate]);
 
+  const checkDateAvailability = (selectedDate) => {
+    const allBookings = Object.keys(localStorage)
+      .filter((key) => key.startsWith("booking_"))
+      .map((key) => JSON.parse(localStorage.getItem(key)));
+
+    const taken = allBookings.some(
+      (b) => b.date === selectedDate && b.email !== formData.email
+    );
+
+    setDateTaken(taken);
+  };
+
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+    if (name === "date") {
+      checkDateAvailability(value);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -62,18 +78,20 @@ function AppointmentForm() {
       return;
     }
 
+    if (dateTaken) {
+      alert(`Sorry, ${formData.date} is already booked by another user!`);
+      return;
+    }
+
     localStorage.setItem(`booking_${user.email}`, JSON.stringify(formData));
     setIsBooked(true);
   };
 
   if (isBooked) {
     return (
-      <div className="container text-center mt-5">
+      <div className="appointment-container text-center">
         <h2 className="text-success mb-3">Appointment Booked Successfully ✅</h2>
-        <div
-          className="card shadow p-4"
-          style={{ borderRadius: "20px", backgroundColor: "#fff0f5" }}
-        >
+        <div className="appointment-card">
           <p><b>Name:</b> {formData.name}</p>
           <p><b>Email:</b> {formData.email}</p>
           <p><b>Phone:</b> {formData.phone}</p>
@@ -86,12 +104,10 @@ function AppointmentForm() {
             See you soon at Grace & Gloss 💖
           </p>
 
-          <div className="d-flex justify-content-center gap-3 mt-3">
+          <div className="btn-group">
             <button
-              className="btn"
-              style={{ backgroundColor: "pink", color: "white" }}
+              className="btn btn-danger"
               onClick={() => {
-
                 localStorage.removeItem(`booking_${user.email}`);
                 setFormData({
                   name: user.name,
@@ -103,6 +119,7 @@ function AppointmentForm() {
                   time: "",
                 });
                 setIsBooked(false);
+                setDateTaken(false);
               }}
             >
               ↩️ Book Another Appointment
@@ -110,9 +127,9 @@ function AppointmentForm() {
 
             <button
               className="btn btn-dark"
-              onClick={() => navigate("/summary")} 
+              onClick={() => navigate("/summary")}
             >
-              📋 View Summary
+               View Summary
             </button>
           </div>
         </div>
@@ -121,76 +138,84 @@ function AppointmentForm() {
   }
 
   return (
-    <div className="container mt-5">
-      <h2 className="text-center mb-4">Grace & Gloss - Book Appointment</h2>
-      <form className="w-75 mx-auto" onSubmit={handleSubmit}>
-        <input
-          name="name"
-          className="form-control mb-3"
-          placeholder="Your Name"
-          value={formData.name}
-          onChange={handleChange}
-          readOnly
-        />
-        <input
-          name="email"
-          className="form-control mb-3"
-          placeholder="Your Email"
-          value={formData.email}
-          onChange={handleChange}
-          readOnly
-        />
-        <input
-          name="phone"
-          className="form-control mb-3"
-          placeholder="Your Phone Number"
-          value={formData.phone}
-          onChange={handleChange}
-        />
-        <input
-          name="location"
-          className="form-control mb-3"
-          placeholder="Your Location"
-          value={formData.location}
-          onChange={handleChange}
-        />
 
-        <select
-          name="service"
-          className="form-control mb-3"
-          value={formData.service}
-          onChange={handleChange}
-        >
-          <option value="">Select Service</option>
-          <option>Hair Styling</option>
-          <option>Facial</option>
-          <option>Manicure</option>
-          <option>Pedicure</option>
-          <option>Bridal Makeup</option>
-        </select>
+    <div className="appointment-bg">
+      
+      <div className="appointment-form-container">
+        <h2 className="text-center mb-4">Grace & Gloss - Book Appointment</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            name="name"
+            className="form-control mb-3"
+            placeholder="Your Name"
+            value={formData.name}
+            onChange={handleChange}
+            readOnly
+          />
+          <input
+            name="email"
+            className="form-control mb-3"
+            placeholder="Your Email"
+            value={formData.email}
+            onChange={handleChange}
+            readOnly
+          />
+          <input
+            name="phone"
+            className="form-control mb-3"
+            placeholder="Your Phone Number"
+            value={formData.phone}
+            onChange={handleChange}
+          />
+          <input
+            name="location"
+            className="form-control mb-3"
+            placeholder="Your Location"
+            value={formData.location}
+            onChange={handleChange}
+          />
 
-        <input
-          type="date"
-          name="date"
-          className="form-control mb-3"
-          value={formData.date}
-          onChange={handleChange}
-        />
-        <input
-          type="time"
-          name="time"
-          className="form-control mb-3"
-          value={formData.time}
-          onChange={handleChange}
-        />
+          <select
+            name="service"
+            className="form-control mb-3"
+            value={formData.service}
+            onChange={handleChange}
+          >
+            <option value="">Select Service</option>
+            <option>Hair Styling</option>
+            <option>Facial</option>
+            <option>Manicure</option>
+            <option>Pedicure</option>
+            <option>Bridal Makeup</option>
+          </select>
 
-        <button
-          className="btn w-100"
-          style={{ backgroundColor: "rgb(226, 91, 114)", color: "white" }}
-        >
-          Book Appointment
-        </button>
-      </form>
+          <input
+            type="date"
+            name="date"
+            className="form-control mb-1"
+            value={formData.date}
+            onChange={handleChange}
+          />
+          {dateTaken && (
+            <p className="date-warning">
+              ⚠️ Sorry, this date is already booked. Please choose another one.
+            </p>
+          )}
+
+          <input
+            type="time"
+            name="time"
+            className="form-control mb-3"
+            value={formData.time}
+            onChange={handleChange}
+          />
+
+          <button className="bookbtn w-100">
+            Book Now
+          </button>
+        </form>
+          <p className="mt-3">👈<Link to='/' className="text-danger fw-500">Back to Home</Link></p>
+      </div>
     </div>
   );
 }
