@@ -6,12 +6,11 @@ import contactImg from '../../assets/contactImg.jpg';
 function Contact() {
   return (
     <div className='contact'>
-      <div className='img-banner'>
-      <img src="" alt="" />
+      <div className='container'>
+      <h2>Contact Us</h2>
       </div>
-
       <div className='child'>
-        <img src="https://cucumbabeautysalon.com/wp-content/themes/cucumba/assets/images/leart.svg" className="h-50" alt="" />
+        <img src="https://cucumbabeautysalon.com/wp-content/themes/cucumba/assets/images/leart.svg"  alt="" />
         <h1>Keep In Touch With Us</h1>
         <p>Feel free to contact us for an appointment or to get your
             queries answered.</p>
@@ -20,7 +19,7 @@ function Contact() {
              <FaLocationDot className='place' size={26}/>
              <h5>Head Office</h5>
              <p>C K Tower 3rd floor - Kozhikode, <br/>
-             Mavoor road Junction Calicut, Kerala 673001</p>
+             Mavoor road Junction Calicut,<br/> Kerala 673001</p>
           </div>
           <div className="icon">
              <FaPhone className='phone' size={26}/>
@@ -41,16 +40,17 @@ function Contact() {
         <div>
           <img src={contactImg} alt="" />
         </div>
-        <div>
+        <div className='fill'>
           <h4>Drop us a line</h4>
           <p>Please complete the short form below and we’ll respond as soon as possible. </p>
 
-          <form>
+          <form className='FORM'>
             <input type="text" placeholder='Name' />
             <input type="email" placeholder='Email Id' />
             <input type="number" placeholder='Mobile Number'/>
             <input type="text" placeholder='Location' />
             <textarea name="message" id="" placeholder='message' />
+            <button type='btn' className='msg-btn mt-3'>Send message</button>
           </form>
         </div>
       </div>
