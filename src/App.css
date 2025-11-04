@@ -1,3 +1,4 @@
+
 .navbar{
   margin: 0 0;
   position: fixed;
@@ -134,6 +135,55 @@
 body.sidebar-open {
   overflow: auto;
 }
+
+.logout-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.logout-box {
+  background: white;
+  padding: 25px 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logout-btns {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.yes-btn {
+  background-color: rgb(226, 91, 114);
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.no-btn {
+  background-color: lightgray;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.no-btn:hover,
+.yes-btn:hover {
+  opacity: 0.8;
+}
+
+
 
 /* ........................................... */
 
@@ -357,36 +407,3 @@ body.sidebar-open {
   display: none;
 }
 
-/* .................Login page...................... */
-.sign-in{
-  background-color: rgb(250, 217, 222);
-  width: 100%;
-  margin-left: 500px;
-  padding-right: 0;
-  
-}
-.sign-in h2{
-  font-size: 30px;
-  font-weight: bold;
-  font-style: italic;
-  margin-top: 50px;
-  padding-right: 250px;
-  text-align: center;
-}
-
-
-/* ...............Register................. */
-.sign-up{
-  width: 100%;
-  background-color: rgb(250, 217, 222);
-  margin-left: 500px;
-}
-
-.sign-up h2{
-  font-size: 30px;
-  font-weight: bold;
-  font-style: italic;
-  margin-top: 50px;
-  margin-left: 250px;
-  text-align: center;
-}

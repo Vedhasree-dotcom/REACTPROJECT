@@ -1,0 +1,87 @@
+
+.register {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.register > div:first-child {
+  flex: 1;
+  height: 100%;
+}
+
+.register > div:first-child img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sign-up {
+  flex: 1;
+  background-color: rgb(255, 230, 235); 
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.sign-up form {
+  background: white;
+  border-radius: 15px;
+  padding: 30px 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 400px;
+}
+
+.register-input {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.register-input:focus {
+  border-color: rgb(226, 91, 114);
+}
+
+.sign-up label {
+  font-weight: 500;
+  color: #333;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.sign-up button:hover {
+  background-color: rgb(216, 70, 96);
+  transition: 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .register {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .register > div:first-child {
+    width: 100%;
+    height: 250px;
+  }
+
+  .sign-up {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .sign-up form {
+    width: 90%;
+  }
+}

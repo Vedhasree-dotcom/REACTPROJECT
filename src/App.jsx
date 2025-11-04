@@ -11,11 +11,10 @@ import Contact from './Components/PAGES/Contact';
 import Services from './Components/PAGES/Services';
 import AppointmentForm from './Components/PAGES/AppointmentForm';
 import BookingSummary from './Components/PAGES/BookingSummary';
-// import Login from './Components/Login';
+import Login from './Components/Login';
 import Profile from './Components/Profile';
 import Footer from './Components/Footer';
-// import Register from './Components/Register';
-import AuthPage from './Components/Authpage';
+import Register from './Components/Register';
 
 function App() {
 
@@ -29,9 +28,8 @@ function App() {
         <Route path='/services' element={<Services/>} />
         <Route path='/contact' element={<Contact/>} />
         <Route path='/book' element={<AppointmentForm/>} />
-        {/* <Route path='/register' element={<AuthPage/>} />
-        <Route path='/login' element={<AuthPage/>} /> */}
-        <Route path='/auth' element={<AuthPage/>} />
+        <Route path='/register' element={<Register/>} />
+        <Route path='/login' element={<Login/>} /> 
         <Route path='/profile' element={<Profile/>} />
         <Route path="/" element={<AppointmentForm />} />
         <Route path="/summary" element={<BookingSummary />} />

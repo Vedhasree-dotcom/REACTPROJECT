@@ -3,6 +3,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; 
+import loginImg from '../assets/loginImg.jpg'
+import './Login.css';
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -15,13 +17,13 @@ function Login() {
     e.preventDefault();
 
     if (!email && !password) {
-      setMessage("❌ Please fill in both email and password.");
+      alert("❌ Please fill in both email and password.");
       return;
     } else if (email && !password) {
-      setMessage("❌ Please fill the password field also.");
+      alert("❌ Please fill the password field also.");
       return;
     } else if (!email && password) {
-      setMessage("❌ Please fill the email field also.");
+      alert("❌ Please fill the email field also.");
       return;
     }
 
@@ -48,78 +50,95 @@ function Login() {
   };
 
   return (
-    <div className="sign-in pb-5 me-3 pe-3 ">
-      <h2><b>Welcome Back</b></h2>
-      <Form
-        className=" form mt-3 "
-        onSubmit={handleSubmit}
-      >
-        <Form.Group className="mb-2" controlId="formBasicEmail">
-          <Form.Label className="ps-4 mt-2 text-dark"
-          style={{fontSize: "16px",fontStyle:"oblique", fontWeight:"500"}} >
-          Email address</Form.Label>
-          <Form.Control
-            type="email"
-            className="ms-4  w-50 "
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <Form.Text className="text-secondary ms-4">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
+    <div className="login d-flex">
+      <div>
+        <img src={loginImg} alt="" />
+      </div>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+      <div className="sign-in pt-5">
+        <h2><b>Welcome Back</b></h2>
 
-          <Form.Label className="ps-4 mt-2 text-dark" 
-          style={{fontSize: "16px",fontStyle:"oblique", fontWeight:"500"}}>
-            Password</Form.Label>
-
-          <div className="d-flex align-items-center ms-4">
+        <Form className="form mt-3" onSubmit={handleSubmit}>
+          <Form.Group className="mb-2" controlId="formBasicEmail">
+            <Form.Label className="ps-3 mt-2 text-dark"
+              style={{ fontSize: "16px", fontStyle: "oblique", fontWeight: "500" }}>
+              Email address
+            </Form.Label>
             <Form.Control
-              type={showPassword ? "text" : "password"}
-              className="w-50 "
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              type="email"
+              className="ms-3 w-100"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
-            <Button
-              variant="link"
-              className="text-secondary ms-2"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
-            </Button>
-          </div>
-        </Form.Group>
+            <Form.Text className="text-secondary ms-4">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
 
-        <Form.Group className="mb-3 ms-4" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" className="text-dark"
-            style={{fontSize: "15px",fontStyle:"oblique"}} />
-        </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label className="ps-3 mt-2 text-dark"
+              style={{ fontSize: "16px", fontStyle: "oblique", fontWeight: "500" }}>
+              Password
+            </Form.Label>
 
-        
+            <div className="d-flex align-items-center ms-3">
+              <Form.Control
+                type={showPassword ? "text" : "password"}
+                className="w-100"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Button
+                variant="link"
+                className="text-secondary ms-2"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </Button>
+            </div>
+          </Form.Group>
 
-        <Button  type="submit" className="mt-3 ps-5 w-50 pe-5 text-light"
-         style={{backgroundColor: "rgb(226, 91, 114)",
-          border: "none",
-          marginLeft: "20px"
-          }} >
-          <b>Submit</b>
-        </Button>
+          <Form.Group className="mb-3 ms-4" controlId="formBasicCheckbox">
+            <Form.Check
+              type="checkbox"
+              label="Check me out"
+              className="text-dark"
+              style={{ fontSize: "15px", fontStyle: "oblique" }}
+            />
+          </Form.Group>
 
-
-        {message && (
-          <p
-            className="ms-4 mt-1"
+          <Button
+            type="submit"
+            className="mt-3 mb-3 ps-5 w-100 pe-5 text-light"
             style={{
-              color: message.includes("✅") ? "green" : "red",
-              fontWeight: "bold",
+              backgroundColor: "rgb(226, 91, 114)",
+              border: "none",
+              marginLeft: "20px",
             }}
           >
-            {message}
+            <b>Submit</b>
+          </Button>
+
+          <p className="text-center fw-500">
+            Don't have an account?{" "}
+            <Link className="register text-decoration-none" to="/register">
+              Sign Up
+            </Link>
           </p>
-        )}
-      </Form>
+
+          {message && (
+            <p
+              className="ms-4 mt-1"
+              style={{
+                color: message.includes("✅") ? "green" : "red",
+                fontWeight: "bold",
+              }}
+            >
+              {message}
+            </p>
+          )}
+        </Form>
+      </div>
     </div>
   );
 }

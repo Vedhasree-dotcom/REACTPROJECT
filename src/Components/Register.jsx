@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import registerImg from '../assets/registerImg.jpg';
+import './Register.css'
+
 
 function Register() {
   const [user, setUser] = useState({
@@ -56,7 +59,12 @@ function Register() {
   };
 
   return (
-<div className="container pb-5" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+    <div className="register">
+    <div>
+      <img src={registerImg} alt="" />
+        
+    </div>
+<div className="sign-up pb-5" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <h2 className="text-center fw-bold">Create an Account</h2>
       <p className="text-center">
         Start your style with <b>Grace & Gloss </b>
@@ -136,6 +144,7 @@ function Register() {
           Submit
         </button>
       </form>
+    </div>
     </div>
   );
 }
