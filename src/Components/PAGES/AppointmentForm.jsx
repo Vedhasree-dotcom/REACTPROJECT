@@ -163,7 +163,7 @@ function AppointmentForm() {
           <input
             name="phone"
             className="form-control mb-3"
-            placeholder="Your Phone Number"
+            placeholder="WhatsApp Number"
             value={formData.phone}
             onChange={handleChange}
           />

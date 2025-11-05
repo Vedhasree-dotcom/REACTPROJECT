@@ -93,7 +93,8 @@ function BookingSummary() {
 
   if (!state.isEditing) {
     return (
-      <div className="container text-center mt-5">
+      <div className="summary-page">
+      <div className="summary text-center mt-5">
         <h2>Booking Summary for {user.name}</h2>
         <div
           className="card shadow mt-4 p-4"
@@ -170,51 +171,53 @@ function BookingSummary() {
           </p>
         </div>
       </div>
+      </div>
     );
   }
 
   return (
-    <div className="container mt-5 text-center">
-      <h2>✏️ Edit Booking</h2>
+    <div className="edit-booking-container">
+    <div className="edit-booking-content mt-5 text-center">
+      <h2>Edit Booking</h2>
       <form
-        className="w-75 mx-auto card shadow p-4"
+        className="w-100 ps-5 pe-5  card shadow p-4"
         style={{ backgroundColor: "#fff0f5", borderRadius: "20px" }}
         onSubmit={handleUpdate}
       >
         <input
-          className="form-control mb-3"
+          className="form-control w-100"
           name="name"
           value={editData.name}
           onChange={handleEditChange}
         />
         <input
-          className="form-control mb-3"
+          className="form-control w-100 mb-3"
           name="email"
           value={editData.email}
           onChange={handleEditChange}
         />
         <input
-          className="form-control mb-3"
+          className="form-control w-100 mb-3"
           name="phone"
           value={editData.phone}
           onChange={handleEditChange}
         />
         <input
-          className="form-control mb-3"
+          className="form-control w-100 mb-3"
           name="service"
           value={editData.service}
           onChange={handleEditChange}
         />
         <input
           type="date"
-          className="form-control mb-3"
+          className="form-control w-100 mb-3"
           name="date"
           value={editData.date}
           onChange={handleEditChange}
         />
         <input
           type="time"
-          className="form-control mb-3"
+          className="form-control w-100 mb-3"
           name="time"
           value={editData.time}
           onChange={handleEditChange}
@@ -222,6 +225,7 @@ function BookingSummary() {
 
         <button className="btn btn-success w-100 mt-2">Save Changes</button>
       </form>
+    </div>
     </div>
   );
 }
