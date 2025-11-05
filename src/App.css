@@ -867,7 +867,7 @@ textarea {
   .child img {
     margin-left: 0;
     display: block;
-    margin: 40px auto 0 auto;
+    margin: 50px auto 0 auto;
   }
 
   .icons {
@@ -906,6 +906,7 @@ textarea {
   }
 
   .FORM {
+    display: grid;
     grid-template-columns: 1fr;
     margin-right: 0;
   }
@@ -920,6 +921,9 @@ textarea {
 }
 
 @media (max-width: 480px) {
+  .child img{
+    margin-top: 50px;
+  }
   .child h1 {
     font-size: 32px;
   }
@@ -931,4 +935,24 @@ textarea {
   .fill h4 {
     font-size: 24px;
   }
+  .FORM {
+    grid-template-columns: 1fr;
+    margin-right: 0;
+    gap: 15px;
+  }
+  .FORM input,
+  .FORM textarea {
+    width: 100%;
+    grid-column: 1; 
+  }
+
+  textarea {
+    min-height: 160px;
+  }
+
+  .msg-btn {
+    grid-column: 1;
+    width: 100%;
+  }
+
 }
