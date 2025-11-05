@@ -209,7 +209,7 @@ body.sidebar-open {
 
 
 
-/* ........................................... */
+/* .................Home Page.......................... */
 
 
 .home{
@@ -430,6 +430,44 @@ body.sidebar-open {
 .carousel-control-next-icon {
   display: none;
 }
+
+
+/* ...............About Page................... */
+.about-banner {
+  position: relative;
+  width: 100%;
+  height: 300px; 
+  overflow: hidden;
+}
+
+.about-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(70%); 
+}
+
+.about-banner h2 {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.about-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 30px 40px;
+}
+
+
+
 
 
 /* .................AppointmentForm.css........................... */

@@ -1,29 +1,30 @@
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel';
-import { GiHairStrands } from "react-icons/gi";
-import { FaChair, FaWifi, FaCar, FaUsers, FaBuilding, FaCut } from "react-icons/fa";
-
-
+import { FaChair, FaWifi, FaCar, FaUsers, FaBuilding} from "react-icons/fa";
+import { GiHairStrands } from "react-icons/gi";  
 
 
 function About() {
   return (
-    <div className='about-container'>
+    <div className='about'>
+      <div className='about-banner'>
       <img src="https://images.pexels.com/photos/7256137/pexels-photo-7256137.jpeg" alt="" />
       <h2>About Us</h2>
+      </div>
     
       <div className='about-grid'>
         <div className="about-carousel">
       <Carousel>
       <Carousel.Item>
-        <img src="https://images.pexels.com/photos/19664877/pexels-photo-19664877.jpeg" alt="" />
+          <img src="https://images.pexels.com/photos/16220868/pexels-photo-16220868.jpeg" alt="" />
         <Carousel.Caption>
           <h3>First slide label</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img src="" alt="" />
+        <img src="https://images.pexels.com/photos/19664877/pexels-photo-19664877.jpeg" alt="" />
+        
         <Carousel.Caption>
           <h3>Second slide label</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -46,7 +47,7 @@ function About() {
 
         <div className="special-grid">
           <div className="special-icon">
-            {/* <FaLocationDot className="place text-light" size={60} /> */}
+            <FaBuilding className="place text-light" size={70} />
               <h5>4000 Sqft Family Salon</h5>
               <p>
                 A unisex spacious salon to detox, rejuvenate <br/>
@@ -54,21 +55,21 @@ function About() {
               </p>
               </div>
               <div className="special-icon">
-            {/* <FaLocationDot className="place text-light" size={60} /> */}
+            <FaChair className="place text-light" size={70} />
               <h5>VIP Lounge</h5>
               <p>
                 Grace & Gloss is a posh beauty salon that exudes <br/> elegance and comfort.
               </p>
               </div>
               <div className="special-icon">
-            {/* <FaLocationDot className="place text-light" size={60} /> */}
+            <GiHairStrands className="place text-light" size={72} />
               <h5>Celebrity Hairstylists</h5>
               <p>
                 Our beauty professionals are passionate and well-trained, and <br/> they have expertise in styling <br/> celebrities.
               </p>
               </div>
               <div className="special-icon">
-            {/* <FaLocationDot className="place text-light" size={60} /> */}
+            <FaWifi className="place text-light" size={70} />
               <h5>Free wifi</h5>
               <p>
                 Enjoy access to free WiFi while at Grace & Gloss salon
@@ -76,7 +77,7 @@ function About() {
               </p>
               </div>
               <div className="special-icon">
-            {/* <FaLocationDot className="place text-light" size={60} /> */}
+            <FaCar className="place text-light" size={70} />
               <h5>Car Parking available.</h5>
               <p>
                 Get access to a free parking spot while you <br/>
@@ -84,7 +85,7 @@ function About() {
               </p>
               </div>
               <div className="special-icon">
-            {/* <FaLocationDot className="place text-light" size={60} /> */}
+            <FaUsers className="place text-light" size={70} />
               <h5>100000 + Satisfied Customers</h5>
               <p>
                 Over the past 10+ years of service,
