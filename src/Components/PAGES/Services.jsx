@@ -1,21 +1,37 @@
-import React from 'react';
-import { services } from "../../data";    
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 
 function Services() {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    fetch("/services.json")
+      .then((res) => res.json())
+      .then((data) => setServices(data))
+      .catch((err) => console.error("Error loading services:", err));
+  }, []);
+
   return (
-    <div className="container mt-4">
-      <h2 className="text-center mb-4">Our Services</h2>
-      <div className="row">
-        {services.map(service => (
-          <div className="col-md-4 mb-3" key={service.id}>
-            <div className="card">
-              <img src={service.image} className="card-img-top" alt={service.name} />
-              <div className="card-body text-center">
-                <h5>{service.name}</h5>
-              </div>
+    <div className="services-page">
+      <div className="services-container">
+        <h2 className="services-title">Our Services</h2>
+        <div className="services-row">
+          {services.map((service) => (
+            <div className="service-card" key={service.id}>
+              <Link to={`/services/${service.link}`} className="service-link">
+                <img
+                  src={service.image}
+                  alt={service.name}
+                  className="service-img"
+                />
+                <div className="service-body">
+                  <h5>{service.name}</h5>
+                </div>
+              </Link>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

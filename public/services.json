@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "name": "Hair Styling",
+    "image": "/Images/haircut.jpg",
+    "link": "hair"
+  },
+  {
+    "id": 2,
+    "name": "Facial",
+    "image": "/Images/facial.jpg",
+    "link": "facial"
+  },
+  {
+    "id": 3,
+    "name": "Manicure",
+    "image": "/Images/manicure.jpg",
+    "link": "manicure"
+  },
+  {
+    "id": 4,
+    "name": "Pedicure",
+    "image": "/Images/pedicure.jpg",
+    "link": "facial"
+  },
+  {
+    "id": 5,
+    "name": "Bridal Makeup",
+    "image": "/Images/bridal.jpg",
+    "link": "bridal"
+  },
+  {
+    "id": 6,
+    "name": "Makeover",
+    "image": "/Images/makeover.jpg",
+    "link": "makeover"
+  }
+  
+  
+]

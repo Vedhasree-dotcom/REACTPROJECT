@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; 
-import loginImg from '../assets/loginImg.jpg'
+import loginImg from '../assets/loginImg.jpg';
 import './Login.css';
 
 function Login() {
@@ -16,6 +16,12 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // ✅ Email & Password regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&])[A-Za-z\d@$!%*?#&]{8,}$/;
+
+    // ✅ Empty fields check (existing logic preserved)
     if (!email && !password) {
       alert("❌ Please fill in both email and password.");
       return;
@@ -27,6 +33,18 @@ function Login() {
       return;
     }
 
+    // ✅ Regex validations
+    if (!emailRegex.test(email)) {
+      alert("❌ Please enter a valid email address.");
+      return;
+    }
+
+    if (!passwordRegex.test(password)) {
+      alert("❌ Password must contain:\n- At least 8 characters\n- One uppercase letter\n- One lowercase letter\n- One number\n- One special character");
+      return;
+    }
+
+    // ✅ Existing localStorage validation logic
     const registeredUser = JSON.parse(localStorage.getItem("registeredUser"));
 
     if (!registeredUser) {
