@@ -102,7 +102,7 @@ function Home() {
       <div className="overlay"></div> 
 
       <Carousel fade interval={3000}>
-        <Carousel.Item>
+        <Carousel.Item className='review-carousel'>
           <div className="review-item">
             <p style={{marginTop: "40px", fontSize: "20px", textAlign: "justify", fontWeight: "600"}}>
               <i className="fa-solid fa-quote-left" style={{fontSize:"60px"}}></i> <br/>
@@ -117,14 +117,13 @@ function Home() {
           </div>
         </Carousel.Item>
 
-        <Carousel.Item>
+        <Carousel.Item className='review-carousel'>
           <div className="review-item">
             <p style={{marginTop: "40px", fontSize: "20px", textAlign: "justify", fontWeight: "600"}}>
               <i className="fa-solid fa-quote-left" style={{fontSize:"60px"}}></i> <br/>
               When I went to visit the salon for my bridal make up I was a
-              little worried as I had scars on my face. But the expert Suman
-              assured me about the quality of products and I absolutely loved
-              the end result.<br/> <i className="fa-solid fa-quote-right" style={{fontSize:"60px", marginLeft:"600px"}}></i>
+              little worried as I had scars on my face. the experts fix it very nicely. 
+              <br/> <i className="fa-solid fa-quote-right" style={{fontSize:"60px", marginLeft:"600px"}}></i>
             </p>
             <img src={pic2} alt="client2" />
             <h3 className="testimonial-name">Sneha Kumar</h3>
@@ -132,7 +131,7 @@ function Home() {
           </div>
         </Carousel.Item>
 
-        <Carousel.Item>
+        <Carousel.Item className='review-carousel'>
           <div className="review-item">
             <p style={{marginTop: "40px", fontSize: "20px", textAlign: "justify", fontWeight: "600"}}>
               <i className="fa-solid fa-quote-left" style={{fontSize:"60px"}}></i> <br/>

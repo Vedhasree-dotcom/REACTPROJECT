@@ -211,7 +211,6 @@ body.sidebar-open {
 
 /* .................Home Page.......................... */
 
-
 .home{
   margin: 0 0;
 }
@@ -431,6 +430,232 @@ body.sidebar-open {
   display: none;
 }
 
+/* Mobile-first responsive design */
+@media (max-width: 768px) {
+  .image-container {
+    height: 300px;
+    overflow: hidden;
+  }
+  
+  .image {
+    margin-top: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    clip-path: none; 
+    border-radius: 0 0 20px 20px; 
+  }
+  
+  .text-overlay {
+    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  }
+
+  .Grid {
+    flex-direction: column;
+    margin: 40px 15px;
+    gap: 20px;
+  }
+  
+  .image-grid img {
+    height: 300px;
+    width: 100%;
+  }
+  
+  .content h3 {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .content p {
+    font-size: 13px;
+    text-align: justify;
+  }
+  
+  .read {
+    display: block;
+    text-align: center;
+    margin: 15px auto;
+    width: fit-content;
+  }
+  
+  img[src*="salon.png"] {
+    width: 90% !important;
+    margin: 20px auto !important;
+    display: block;
+  }
+  
+  .carousels {
+    margin: 0 0 !important;
+    width: 82%;
+
+  }
+  
+  .carousel-item {
+    height: 300px;
+    
+  }
+  
+  .carousel-caption {
+    text-align: center;
+  }
+  
+  .carousel-caption h3 {
+    font-size: 20px;
+  }
+  
+  .carousel-caption p {
+    font-size: 12px;
+  }
+  
+  .banner-container {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    margin-bottom: 100px;
+  }
+  
+  .banner-text {
+    margin: 30px 20px;
+    text-align: left;
+  }
+  
+  .banner-text h1 {
+    font-size: 30px;
+  }
+  
+  .banner-text h5 {
+    font-size: 14px;
+  }
+  
+  .banner-text p {
+    font-size: 13px;
+    text-align: justify;
+    
+  }
+  
+  .girl-image {
+    height: 300px;
+    filter: brightness(100%); 
+    object-fit: cover;
+  }
+  
+  .booking {
+    padding: 12px 25px !important;
+    font-size: 14px;
+  }
+  
+  .title {
+    margin: 30px 15px;
+  }
+  
+  .title h4 {
+    font-size: 24px;
+  }
+  
+  .title h2 {
+    font-size: 32px;
+  }
+  
+  .review {
+    margin: 30px 15px;
+    padding-top: 10px;
+    border-radius: 25px;
+  }
+  .review-carousel{
+    height: 600px;
+  }
+  
+  .review-item p {
+    font-size: 12px;
+    font-weight: normal;
+    padding: 0 15px;
+  }
+  
+  .fa-quote-left,
+  .fa-quote-right {
+    font-size: 20px !important;
+  }
+  
+  .fa-quote-right {
+    margin-left: 0 !important;
+    display: block;
+    text-align: right;
+    margin-top: 10px;
+  }
+  
+  .testimonial-name {
+    font-size: 16px;
+  }
+ 
+}
+
+@media (max-width: 450px) {
+  .image {
+    margin-top: 40px;
+  }
+
+  .text-overlay {
+    font-size: 20px;
+    position: absolute;
+    z-index: 4;
+    top: 30%;         
+    left: 50%; 
+    text-shadow: 1px 1px black; 
+  }
+  
+  .carousel-caption {
+    margin-bottom: 80px;
+  }
+
+  .carousel-caption h3 {
+    font-size: 18px;
+  }
+  
+  .carousel-caption p {
+    font-size: 12px;
+  }
+  
+  .banner-text {
+    margin: 20px 15px;
+  }
+  
+  .banner-text h1 {
+    font-size: 24px;
+  }
+  
+  .banner-container {
+    height: 350px;
+  }
+  
+  .girl-image {
+    height: 350px;
+  }
+  
+  .title h4 {
+    font-size: 20px;
+  }
+  
+  .title h2 {
+    font-size: 28px;
+  }
+  
+  .review-item img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .testimonial-name {
+    font-size: 16px;
+  }
+}
+
+
+
+
 
 /* ...............About Page................... */
 .about-banner {
@@ -533,8 +758,94 @@ body.sidebar-open {
 } 
 .special-icon p{
   text-align: justify;
+}
 
 
+
+@media (max-width: 768px) {
+  .about-banner {
+    height: 220px;
+  }
+
+  .about-banner h2 {
+    font-size: 2rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    margin: 30px 20px;
+  }
+
+  .carousel-about img {
+    width: 130%;
+    height: 600px;
+    border-radius: none;
+  }
+
+  .about-content {
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .about-content h2 {
+    font-size: 32px;
+  }
+
+  .about-content h3 {
+    font-size: 24px;
+  }
+
+  .about-content p {
+    font-size: 14px;
+  }
+
+  .special-grid {
+    grid-template-columns: 1fr;
+    margin: 20px;
+    gap: 30px;
+  }
+
+  .special-icon .place {
+    margin-left: 0;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .special h1 {
+    font-size: 40px;
+  }
+
+  .special h4 {
+    font-size: 22px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .about-banner h2 {
+    font-size: 1.6rem;
+  }
+
+  .about-content h2 {
+    font-size: 26px;
+  }
+
+  .about-content h3 {
+    font-size: 20px;
+  }
+
+  .special h1 {
+    font-size: 34px;
+  }
+
+  .special h4 {
+    font-size: 20px;
+  }
+
+  .special-icon p {
+    font-size: 15px;
+  }
 }
 
 
