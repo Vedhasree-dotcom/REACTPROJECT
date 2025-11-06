@@ -7,6 +7,7 @@ import Home from './Components/PAGES/Home';
 import About from './Components/PAGES/About';
 import Contact from './Components/PAGES/Contact';
 import Services from './Components/PAGES/Services';
+import Bridal from './Components/PAGES/Bridal';
 import AppointmentForm from './Components/PAGES/AppointmentForm';
 import BookingSummary from './Components/PAGES/BookingSummary';
 import Login from './Components/Login';
@@ -29,6 +30,7 @@ function AppContent() {
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/services' element={<Services />} />
+        <Route path='/services/bridal' element={<Bridal/>}/>
         <Route path='/contact' element={<Contact />} />
         <Route path='/book' element={<AppointmentForm />} />
         <Route path='/register' element={<Register />} />

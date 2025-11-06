@@ -430,7 +430,6 @@ body.sidebar-open {
   display: none;
 }
 
-/* Mobile-first responsive design */
 @media (max-width: 768px) {
   .image-container {
     height: 300px;
@@ -723,7 +722,6 @@ body.sidebar-open {
 
 .special{
   margin-top: 20px;
-  /* background-color: rgb(253, 247, 247); */
   padding-bottom: 20px;
 }
 .special h4{

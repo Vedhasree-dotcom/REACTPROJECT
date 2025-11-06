@@ -1,0 +1,150 @@
+.bridal-banner {
+  position: relative;
+  width: 100%;
+  height: 340px; 
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.bridal-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(80%); 
+}
+
+.bridal-banner h2 {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.bridal-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin: 80px 50px;
+}
+.carousel-bridal .carousel-item{
+  width: 80%;
+  border-radius: 50px;
+}
+.carousel-bridal img{
+  width: 116%;
+  height: 80%;
+  border-radius: 50px;
+  object-fit: fill;
+}
+.bridal-content{
+  padding: 20px 50px;
+  border-radius: 50px;
+}
+.bridal-content h4{
+  color:rgb(226, 91, 114) ;
+  font-size: 30px;
+}
+
+.bridal-content p{
+  text-align: justify;
+  margin-top: 10px;
+}
+
+
+.packages{
+  margin-top: 0;
+  padding-bottom: 20px;
+}
+
+.packages h1{
+  text-align: center;
+    padding-top: 10px;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+
+.makeup-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 40px 150px;
+  gap: 50px;
+}
+.bridal-icon{
+    margin-top: 20px;
+}
+.bridal-icon .makeup{
+  margin-left: 220px;
+}
+.bridal-icon h5{
+  text-align: center;
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+} 
+.bridal-icon p{
+    font-size: 15px;
+  text-align: justify;
+}
+.makeup{
+  background-color: rgb(226, 91, 114);
+  border-radius: 50%;
+  padding: 20px;
+  display: block;
+  }
+
+
+@media (max-width: 768px) {
+  .bridal-banner {
+    height: 250px;
+  }
+
+  .bridal-banner h2 {
+    font-size: 2rem;
+  }
+
+  .bridal-grid {
+    grid-template-columns: 1fr;
+    margin: 30px 20px;
+  }
+  
+  .carousel-bridal img {
+    width: 120%;
+    object-fit: contain;
+    border-radius: none;
+  }
+
+  .bridal-content {
+    margin-top: 20px;
+    padding: 20px;
+    text-align: justify;
+  }
+
+  .bridal-content p {
+    font-size: 14px;
+  }
+
+
+  .makeup-grid {
+    grid-template-columns: 1fr;
+    margin: 20px;
+    gap: 40px;
+  }
+
+  .bridal-icon .makeup {
+    margin-left: 0;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .packages h1 {
+    font-size: 35px;
+  }
+
+ 
+}

@@ -57,7 +57,7 @@ function Navbar() {
           </button>
 
           <Link
-            className="navbar-brand text-light fw-bold ms-4"
+            className="navbar-brand text-light fw-bold ms-5"
             to="/"
             style={{ fontSize: "25px" }}
           >
