@@ -14,9 +14,17 @@ function Navbar() {
   const navigate = useNavigate();
 
   useEffect(() => {
+  const checkLoginStatus = () => {
     const user = JSON.parse(localStorage.getItem("userDetails"));
-    if (user) setIsLoggedIn(true);
-  }, []);
+    setIsLoggedIn(!!user);
+  };
+
+  window.addEventListener("storage", checkLoginStatus);
+  checkLoginStatus();
+
+  return () => window.removeEventListener("storage", checkLoginStatus);
+}, []);
+
 
   const handleLogout = () => {
     localStorage.removeItem("userDetails");

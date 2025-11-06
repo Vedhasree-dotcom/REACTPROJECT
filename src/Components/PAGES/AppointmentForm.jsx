@@ -79,7 +79,7 @@ function AppointmentForm() {
     }
 
     if (dateTaken) {
-      alert(`Sorry, ${formData.date} is already booked by another user!`);
+      alert(`Sorry, this ${formData.date} is already booked by another user!`);
       return;
     }
 

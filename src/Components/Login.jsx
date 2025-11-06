@@ -16,12 +16,10 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // ✅ Email & Password regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&])[A-Za-z\d@$!%*?#&]{8,}$/;
 
-    // ✅ Empty fields check (existing logic preserved)
     if (!email && !password) {
       alert("❌ Please fill in both email and password.");
       return;
@@ -33,7 +31,6 @@ function Login() {
       return;
     }
 
-    // ✅ Regex validations
     if (!emailRegex.test(email)) {
       alert("❌ Please enter a valid email address.");
       return;
@@ -44,13 +41,13 @@ function Login() {
       return;
     }
 
-    // ✅ Existing localStorage validation logic
     const registeredUser = JSON.parse(localStorage.getItem("registeredUser"));
 
     if (!registeredUser) {
-      setMessage("❌ No user found. Please register first.");
-      return;
-    }
+  alert("❌ No user found. Please register first.");
+  navigate("/register");
+  return;
+  }
 
     if (email !== registeredUser.email || password !== registeredUser.password) {
       setMessage("❌ Invalid email or password.");
@@ -65,7 +62,7 @@ function Login() {
 
       setTimeout(() => navigate("/"), 1000);
     }
-  };
+  }; 
 
   return (
     <div className="login d-flex">
@@ -116,14 +113,7 @@ function Login() {
             </div>
           </Form.Group>
 
-          <Form.Group className="mb-3 ms-4" controlId="formBasicCheckbox">
-            <Form.Check
-              type="checkbox"
-              label="Check me out"
-              className="text-dark"
-              style={{ fontSize: "15px", fontStyle: "oblique" }}
-            />
-          </Form.Group>
+          
 
           <Button
             type="submit"
