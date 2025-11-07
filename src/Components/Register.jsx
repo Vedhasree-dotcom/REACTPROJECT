@@ -21,42 +21,40 @@ function Register() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (
-      user.name === "" &&
-      user.email === "" &&
-      user.password === "" 
-    ) {
-      alert("⚠️ Please fill in all fields before submitting!");
-      return;
-    }
+  let newErrors = {};
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    let newErrors = {};
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (user.name === "") newErrors.name = "Name is required.";
+  if (user.email === "") newErrors.email = "Email is required.";
+  else if (!emailRegex.test(user.email))
+    newErrors.email = "Enter a valid email address.";
+  if (user.password === "") newErrors.password = "Password is required.";
+  else if (user.password.length < 6)
+    newErrors.password = "Password must be at least 6 characters.";
 
-    if (user.name === "") newErrors.name = "Name is required.";
-    if (user.email === "") newErrors.email = "Email is required.";
-    else if (!emailRegex.test(user.email))
-      newErrors.email = "Enter a valid email address.";
+  setErrors(newErrors);
 
-    if (user.password === "") newErrors.password = "Password is required.";
-    else if (user.password.length < 6)
-      newErrors.password = "Password must be at least 6 characters.";
+  if (Object.keys(newErrors).length > 0) return;
 
-    
-    setErrors(newErrors);
+  const existingUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
 
-    if (
-      !newErrors.name &&
-      !newErrors.email &&
-      !newErrors.password 
-    ) {
-      localStorage.setItem("registeredUser", JSON.stringify(user));
-      alert("✅ Registration successful! Please login.");
-      navigate("/login");
-    }
-  };
+
+  const userExists = existingUsers.find((u) => u.email === user.email);
+  if (userExists) {
+    setErrors({ email: "User with this email already exists." });
+    return;
+  }
+
+  const updatedUsers = [...existingUsers, user];
+
+  localStorage.setItem("registeredUsers", JSON.stringify(updatedUsers));
+
+  alert("✅ Registration successful! Please login.");
+  navigate("/login");
+};
+
 
   return (
     <div className="register">

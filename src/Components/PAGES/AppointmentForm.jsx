@@ -14,7 +14,7 @@ function AppointmentForm() {
 
   const [isBooked, setIsBooked] = useState(false);
   const [user, setUser] = useState(null);
-  const [dateTaken, setDateTaken] = useState(false); 
+  const [dateTimeTaken, setDateTimeTaken] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,34 +31,27 @@ function AppointmentForm() {
       name: loggedUser.name,
       email: loggedUser.email,
     }));
-
-    const existingBooking = JSON.parse(
-      localStorage.getItem(`booking_${loggedUser.email}`)
-    );
-    if (existingBooking) {
-      setFormData(existingBooking);
-      setIsBooked(true);
-    }
   }, [navigate]);
 
-  const checkDateAvailability = (selectedDate) => {
-    const allBookings = Object.keys(localStorage)
-      .filter((key) => key.startsWith("booking_"))
-      .map((key) => JSON.parse(localStorage.getItem(key)));
+  const checkDateTimeAvailability = (selectedDate, selectedTime) => {
+    const allUserBookings = Object.keys(localStorage)
+      .filter((key) => key.startsWith("bookings_"))
+      .flatMap((key) => JSON.parse(localStorage.getItem(key)) || []);
 
-    const taken = allBookings.some(
-      (b) => b.date === selectedDate && b.email !== formData.email
+    const taken = allUserBookings.some(
+      (b) => b.date === selectedDate && b.time === selectedTime
     );
 
-    setDateTaken(taken);
+    setDateTimeTaken(taken);
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const updated = { ...formData, [name]: value };
+    setFormData(updated);
 
-    if (name === "date") {
-      checkDateAvailability(value);
+    if (name === "date" || name === "time") {
+      checkDateTimeAvailability(updated.date, updated.time);
     }
   };
 
@@ -78,12 +71,33 @@ function AppointmentForm() {
       return;
     }
 
-    if (dateTaken) {
-      alert(`Sorry, this ${formData.date} is already booked by another user!`);
+    if (dateTimeTaken) {
+      alert(
+        `Sorry, this ${formData.date} at ${formData.time} slot is already booked!`
+      );
       return;
     }
 
-    localStorage.setItem(`booking_${user.email}`, JSON.stringify(formData));
+    const existingBookings =
+      JSON.parse(localStorage.getItem(`bookings_${user.email}`)) || [];
+
+    const sameUserDuplicate = existingBookings.some(
+      (b) => b.date === formData.date && b.time === formData.time
+    );
+
+    if (sameUserDuplicate) {
+      alert(
+        `You have already booked an appointment on ${formData.date} at ${formData.time}.`
+      );
+      return;
+    }
+
+    existingBookings.push(formData);
+    localStorage.setItem(
+      `bookings_${user.email}`,
+      JSON.stringify(existingBookings)
+    );
+
     setIsBooked(true);
   };
 
@@ -108,7 +122,6 @@ function AppointmentForm() {
             <button
               className="btn btn-danger"
               onClick={() => {
-                localStorage.removeItem(`booking_${user.email}`);
                 setFormData({
                   name: user.name,
                   email: user.email,
@@ -119,17 +132,14 @@ function AppointmentForm() {
                   time: "",
                 });
                 setIsBooked(false);
-                setDateTaken(false);
+                setDateTimeTaken(false);
               }}
             >
               ↩️ Book Another Appointment
             </button>
 
-            <button
-              className="btn btn-dark"
-              onClick={() => navigate("/summary")}
-            >
-               View Summary
+            <button className="btn btn-dark" onClick={() => navigate("/summary")}>
+              View Summary
             </button>
           </div>
         </div>
@@ -138,9 +148,7 @@ function AppointmentForm() {
   }
 
   return (
-
     <div className="appointment-bg">
-      
       <div className="appointment-form-container">
         <h2 className="text-center mb-4">Grace & Gloss - Book Appointment</h2>
         <form onSubmit={handleSubmit}>
@@ -149,7 +157,6 @@ function AppointmentForm() {
             className="form-control mb-3"
             placeholder="Your Name"
             value={formData.name}
-            onChange={handleChange}
             readOnly
           />
           <input
@@ -157,7 +164,6 @@ function AppointmentForm() {
             className="form-control mb-3"
             placeholder="Your Email"
             value={formData.email}
-            onChange={handleChange}
             readOnly
           />
           <input
@@ -196,11 +202,6 @@ function AppointmentForm() {
             value={formData.date}
             onChange={handleChange}
           />
-          {dateTaken && (
-            <p className="date-warning">
-              ⚠️ Sorry, this date is already booked. Please choose another one.
-            </p>
-          )}
 
           <input
             type="time"
@@ -210,11 +211,17 @@ function AppointmentForm() {
             onChange={handleChange}
           />
 
-          <button className="bookbtn w-100">
-            Book Now
-          </button>
+          {dateTimeTaken && (
+            <p className="date-warning">
+              ⚠️ This date & time slot is already booked. Please choose another.
+            </p>
+          )}
+
+          <button className="bookbtn w-100">Book Now</button>
         </form>
-          <p className="mt-3">👈<Link to='/' className="text-danger fw-500">Back to Home</Link></p>
+        <p className="mt-3">
+          👈 <Link to="/" className="text-danger fw-500">Back to Home</Link>
+        </p>
       </div>
     </div>
   );
