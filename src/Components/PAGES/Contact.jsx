@@ -12,7 +12,6 @@ function Contact() {
   });
   const [errors, setErrors] = useState({});
 
-  // ✅ Regex validation
   const validate = () => {
     const newErrors = {};
     if (!/^[A-Za-z\s]+$/.test(formData.name.trim())) {
