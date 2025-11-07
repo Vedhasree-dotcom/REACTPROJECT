@@ -14,13 +14,13 @@ const PopupLoginReminder = () => {
         <div className="popup-buttons">
           <button
             onClick={() => navigate("/login")}
-            className="popup-btn login"
+            className="popup-btn w-100 login"
           >
             Login
           </button>
           <button
             onClick={() => navigate("/register")}
-            className="popup-btn register"
+            className="popup-btn w-100  register"
           >
             Register
           </button>
