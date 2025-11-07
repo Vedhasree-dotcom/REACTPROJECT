@@ -23,7 +23,7 @@ function BookingSummary() {
     setBookings(userBookings);
   }, [navigate]);
 
-  // ✅ Check if date/time slot is already booked (by any user)
+  
   const isSlotTaken = (date, time, excludeIndex = null) => {
     for (let key in localStorage) {
       if (key.startsWith("bookings_")) {
