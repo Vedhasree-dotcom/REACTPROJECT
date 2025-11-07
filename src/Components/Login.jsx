@@ -17,17 +17,15 @@ function Login() {
   const validate = () => {
     let newErrors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const passwordRegex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&])[A-Za-z\d@$!%*?#&]{8,}$/;
-
+    
     if (!email) newErrors.email = "Email is required.";
     else if (!emailRegex.test(email))
       newErrors.email = "Please enter a valid email address.";
 
     if (!password) newErrors.password = "Password is required.";
-    else if (!passwordRegex.test(password))
-      newErrors.password =
-        "Password must contain at least 8 characters, one uppercase, one lowercase, one number, and one special character.";
+
+    else if (password.length < 6)
+    newErrors.password = "Password must be at least 6 characters.";
 
     return newErrors;
   };

@@ -15,6 +15,8 @@ function AppointmentForm() {
   const [isBooked, setIsBooked] = useState(false);
   const [user, setUser] = useState(null);
   const [dateTimeTaken, setDateTimeTaken] = useState(false);
+  const [phoneError, setPhoneError] = useState("");
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -46,14 +48,24 @@ function AppointmentForm() {
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    const updated = { ...formData, [name]: value };
-    setFormData(updated);
+  const { name, value } = e.target;
+  const updated = { ...formData, [name]: value };
+  setFormData(updated);
 
-    if (name === "date" || name === "time") {
-      checkDateTimeAvailability(updated.date, updated.time);
+  if (name === "date" || name === "time") {
+    checkDateTimeAvailability(updated.date, updated.time);
+  }
+
+  if (name === "phone") {
+    const phoneRegex = /^[6-9]\d{9}$/; 
+    if (!phoneRegex.test(value)) {
+      setPhoneError("⚠️ Please enter a valid 10-digit phone number");
+    } else {
+      setPhoneError("");
     }
-  };
+  }
+};
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -166,13 +178,15 @@ function AppointmentForm() {
             value={formData.email}
             readOnly
           />
-          <input
+            <input
             name="phone"
-            className="form-control mb-3"
+            className="form-control mb-1"
             placeholder="WhatsApp Number"
             value={formData.phone}
             onChange={handleChange}
           />
+          {phoneError && <p className="text-danger mb-2">{phoneError}</p>}
+
           <input
             name="location"
             className="form-control mb-3"

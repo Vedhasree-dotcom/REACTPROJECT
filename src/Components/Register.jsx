@@ -31,6 +31,7 @@ function Register() {
   else if (!emailRegex.test(user.email))
     newErrors.email = "Enter a valid email address.";
   if (user.password === "") newErrors.password = "Password is required.";
+  
   else if (user.password.length < 6)
     newErrors.password = "Password must be at least 6 characters.";
 

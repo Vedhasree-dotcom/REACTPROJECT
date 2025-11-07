@@ -1,4 +1,6 @@
-import React from 'react';
+import React from "react";
+import PopupLoginReminder from "./PopupLoginReminder";
+import { useState, useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom';
 import salon from "../../assets/salon.png";
@@ -8,8 +10,21 @@ import pic2 from "../../assets/pic2.png";
 
 
 function Home() {
+
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userDetails"));
+    if (!user) {
+      setShowPopup(true);
+    }
+  }, []);
+
   return (<>
-    <div className="home mt-3">
+  
+       {showPopup && <PopupLoginReminder />}
+
+      <div className={`home mt-3 ${showPopup ? "blurred" : ""}`}>
        <h2 className='text-overlay'>Your Perfect Beauty Partner</h2>
       <div className='image-container'>
       <img src="https://images.pexels.com/photos/15026763/pexels-photo-15026763.jpeg" className="image" alt="salon" />
