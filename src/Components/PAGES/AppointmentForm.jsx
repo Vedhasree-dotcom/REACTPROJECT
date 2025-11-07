@@ -35,6 +35,7 @@ function AppointmentForm() {
     }));
   }, [navigate]);
 
+  
   const checkDateTimeAvailability = (selectedDate, selectedTime) => {
     const allUserBookings = Object.keys(localStorage)
       .filter((key) => key.startsWith("bookings_"))
