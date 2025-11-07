@@ -12,6 +12,9 @@ function Register() {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
+  const [message, setMessage] = useState("");
+
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -31,7 +34,7 @@ function Register() {
   else if (!emailRegex.test(user.email))
     newErrors.email = "Enter a valid email address.";
   if (user.password === "") newErrors.password = "Password is required.";
-  
+
   else if (user.password.length < 6)
     newErrors.password = "Password must be at least 6 characters.";
 
@@ -39,8 +42,9 @@ function Register() {
 
   if (Object.keys(newErrors).length > 0) return;
 
-  const existingUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
 
+
+  const existingUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
 
   const userExists = existingUsers.find((u) => u.email === user.email);
   if (userExists) {
@@ -48,12 +52,14 @@ function Register() {
     return;
   }
 
+
   const updatedUsers = [...existingUsers, user];
 
   localStorage.setItem("registeredUsers", JSON.stringify(updatedUsers));
 
-  alert("✅ Registration successful! Please login.");
-  navigate("/login");
+  setMessage("✅ Registration successful! Please login.");
+  setTimeout(() => navigate("/login"), 2000);
+
 };
 
 
@@ -143,6 +149,19 @@ function Register() {
         >
           Submit
         </button>
+
+        {message && (
+        <p
+          style={{
+            color: message.includes("✅") ? "green" : "red",
+            fontWeight: "bold",
+            marginTop: "10px",
+            textAlign: "center"
+          }}
+        >
+          {message}
+        </p>
+      )}
 
         <p className="text-dark fw-500 mt-3 ms-5">Already have an account?<Link to="/login" className="click2 text-decoration-none">Sign In</Link></p>
       </form>
