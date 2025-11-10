@@ -136,11 +136,11 @@ function Contact() {
               />
             </div>
 
-            <div className="field textarea-field">
+            <div className="textarea">
               <textarea
                 name="message"
                 placeholder="Message"
-                rows= "6"
+                cols={100}
                 value={formData.message}
                 onChange={handleChange}
               ></textarea>

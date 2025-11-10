@@ -1291,7 +1291,7 @@ body.sidebar-open {
 }
 
 textarea {
-  grid-column: 1 / 3;
+  grid-row: 1/ 3;
    min-height: 100px;
   resize: none;
  }
