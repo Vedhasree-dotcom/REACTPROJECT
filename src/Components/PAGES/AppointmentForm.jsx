@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import emailjs from "@emailjs/browser";
+
 
 function AppointmentForm() {
   const [formData, setFormData] = useState({
@@ -69,50 +71,71 @@ function AppointmentForm() {
 
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (
-      !formData.name ||
-      !formData.email ||
-      !formData.phone ||
-      !formData.location ||
-      !formData.service ||
-      !formData.date ||
-      !formData.time
-    ) {
-      alert("Please fill all fields!");
-      return;
-    }
+  if (
+    !formData.name ||
+    !formData.email ||
+    !formData.phone ||
+    !formData.location ||
+    !formData.service ||
+    !formData.date ||
+    !formData.time
+  ) {
+    alert("Please fill all fields!");
+    return;
+  }
 
-    if (dateTimeTaken) {
-      alert(
-        `Sorry, this ${formData.date} at ${formData.time} slot is already booked!`
-      );
-      return;
-    }
-
-    const existingBookings =
-      JSON.parse(localStorage.getItem(`bookings_${user.email}`)) || [];
-
-    const sameUserDuplicate = existingBookings.some(
-      (b) => b.date === formData.date && b.time === formData.time
+  if (dateTimeTaken) {
+    alert(
+      `Sorry, this ${formData.date} at ${formData.time} slot is already booked!`
     );
+    return;
+  }
 
-    if (sameUserDuplicate) {
-      alert(
-        `You have already booked an appointment on ${formData.date} at ${formData.time}.`
-      );
-      return;
-    }
+  const existingBookings =
+    JSON.parse(localStorage.getItem(`bookings_${user.email}`)) || [];
 
-    existingBookings.push(formData);
-    localStorage.setItem(
-      `bookings_${user.email}`,
-      JSON.stringify(existingBookings)
+  const sameUserDuplicate = existingBookings.some(
+    (b) => b.date === formData.date && b.time === formData.time
+  );
+
+  if (sameUserDuplicate) {
+    alert(
+      `You have already booked an appointment on ${formData.date} at ${formData.time}.`
     );
+    return;
+  }
 
-    setIsBooked(true);
-  };
+  // Save booking
+  existingBookings.push(formData);
+  localStorage.setItem(
+    `bookings_${user.email}`,
+    JSON.stringify(existingBookings)
+  );
+
+  // 🔥 Send email using EmailJS
+  emailjs
+    .send(
+      "service_7i7lz2q",
+      "template_3b7qnqm",
+      {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        location: formData.location,
+        service: formData.service,
+        date: formData.date,
+        time: formData.time,
+      },
+      "D3pVeE-IMNHyh0DU0"
+    )
+    .then(() => console.log("Email sent!"))
+    .catch((err) => console.error("EmailJS Error:", err));
+
+  setIsBooked(true);
+};
+
 
   if (isBooked) {
     return (
